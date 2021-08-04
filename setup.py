@@ -10,8 +10,9 @@ setup(
   # your library
   author = 'G.K.Sriharsha',                   # Type in your name
   author_email = 'gksriharsha@gmail.com',      # Type in your E-Mail
-  url = 'https://github.com/user/reponame',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/user/reponame/archive/v_01.tar.gz',
+  url = 'https://github.com/gksriharsha/RSFS',   # Provide either the
+  # link to your github or to your website
+  download_url = 'https://github.com/gksriharsha/RSFS/archive/refs/tags/v_01.tar.gz',
   keywords = ['Dimensionality Reduction', 'Machine Learning', 'AI',
               'Feature Selection', 'Supervised Learning'],
   # Keywords
