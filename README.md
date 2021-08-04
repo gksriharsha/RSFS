@@ -8,12 +8,8 @@ RSFS is divided into two parts based on functionality.
    ```shell
    pip install rsfs
    ```
-1. **RSFS - Test Bench** This module is meant to perform grid search operation on RSFS and save the results to a
-   csv file. This will be helpful to later perform optimization procedures to find the right set of hyperparameters for 
-   the dimensionality reduction of a particular dataset.
-   ```shell
-   pip install rsfs-bench
-   ```
+   
+1. RSFS-Testbench. This will be added later to the repository.
 
 ## Usage Instructions
 
