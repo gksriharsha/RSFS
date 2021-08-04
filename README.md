@@ -17,6 +17,40 @@ RSFS is divided into two parts based on functionality.
 
 ## Usage Instructions
 
+The package is imported and RSFS function in the package is executed with the appropriate parameters in the function call.
+The example code in the RSFS file is as follows:
+```python
+import numpy
+import rsfs
+from sklearn.model_selection import train_test_split
+
+Data = numpy.loadtxt(open(str('../Isolet.csv'), "rb"), delimiter=",", skiprows=1)
+labels = Data[:, -1]
+Data = Data[:, :-1]
+train, test, train_labels, test_labels = train_test_split(
+  Data, labels, test_size=0.33, random_state=42, stratify=labels)
+data_train = train
+data_test = test
+label_train = train_labels
+label_test = test_labels
+Parameters = {
+  'RSFS': {
+      'Classifier': 'KNN',
+      'Classifier Properties': {
+          'n_neighbors': 3,
+          'weights': 'distance'
+      },
+      'Dummy feats': 100,
+      'delta': 0.05,
+      'maxiters': 300000,
+      'fn': 'sqrt',
+      'cutoff': 0.99,
+      'Threshold': 1000,
+  },
+  'Verbose': 1
+}
+print(rsfs.RSFS(train,test,train_labels,test_labels,Parameters))
+```
 ### Labels
 
 This package may give rise to unexpected behaviour if the labels are not contiguous natural numbers. Therefore, the dataset should
@@ -65,36 +99,7 @@ Parameters = {
 
         'Verbose': 1
     }
-``` 
-
-### States Dictionary
-
-This dictionary contains the total search space for each hyper parameter in the algorithm. This is done by creating list
-of all possible values for each parameter. One of these values will later be selected while running the grid search algorithm.
-
-The structure of search space is as follows:
-```python
-import numpy
-States = {
-            'Classifier': 'KNN',
-            'Classifier Properties':
-            {
-                'n_neighbors': 3
-            },
-            'RSFS': {
-                'Classifier':'KNN',
-                'Classifier Properties':{
-                  'n_neighbors':list(numpy.arange(3, 5, 2)),
-                },
-                'Dummy feats': list(numpy.arange(500, numpy.size(Data, 1), 100)),
-                'fn': ['sqrt', '10log'],
-                'Threshold': list(numpy.arange(900, 1100, 200)),
-                'cutoff': [0.95, 0.99, 0.997]
-            }
-        }
-
 ```
-
 ## Explanation
 
 I have explained the working of RSFS in my medium [blog](https://gksriharsha.medium.com) and would be focusing on usage 
